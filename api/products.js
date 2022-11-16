@@ -1,6 +1,4 @@
-import productModel from "/model/products-MongoDb.js";
-
-
+import productModel from '../model/products-mongodb.js';
 class ProductApi {
 
     async getProducts() {

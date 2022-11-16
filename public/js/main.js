@@ -37,6 +37,7 @@ class Main {
                 navLink.classList.remove('main-nav__link--active');
                 navLink.removeAttribute('aria-current');
             }
+            document.querySelector('.main-nav-toggle').checked = false;
         });
     }
 
