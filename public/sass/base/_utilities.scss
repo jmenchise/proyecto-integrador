@@ -1,0 +1,29 @@
+$textAlignValues: ("left", "right", "center", "justyify");
+
+@each $textAlign in TextAlignValues {
+    .u-text-#{$textAlign} {
+        text-align: #{textAlign}!important;
+    }
+}
+
+.u-max-width {
+    @media (min-width: 500px) {
+        max-width: 300px;
+    }
+}
+
+// .u-text-left {
+//     text-align: left!important;
+// }
+// 
+// .u-text-right {
+//     text-align: right!important;
+// }
+// 
+// .u-text-center {
+//     text-align: center!important;
+// }
+// 
+// .u-text-justify {
+//     text-align: justify!important;
+// }

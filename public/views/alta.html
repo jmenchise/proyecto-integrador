@@ -1,0 +1,126 @@
+<div class="register-content">
+    <h1 class="register-form__heading">Alta de Producto</h1>
+
+    <div class="register-form-container">
+
+        <form class="register-form" action="/api/products" method="post" enctype="multipart/form-data" autocomplete="off">
+            <div class="register-form__row">
+                <input class="register-row__input--type-hidden" type="hidden" name="id" id="id">
+                <input class="register-row__input register-row__input--type-text" type="text" name="name" id="name">
+                <label class="register-row__label" for="name">Nombre:</label>
+                <div class="register-row__error-detail"></div>
+            </div>
+
+            <div class="register-form__row">
+                <input class="register-row__input register-row__input--type-number" type="text" name="price" id="price">
+                <label class="register-row__label" for="price">Precio:</label>
+                <div class="register-row__error-detail"></div>
+            </div>
+
+            <div class="register-form__row">
+                <input class="register-row__input register-row__input--type-number" id="stock" name="stock" type="text">
+                <label class="register-row__label" for="Stock">Stock</label>
+                <div class="register-row__error-detail"></div>
+            </div>
+
+            <div class="register-form__row">
+                <input class="register-row__input register-row__input--type-text" list="brands" name="brand" id="brand" type="text">
+                <label class="register-row__label" for="brand">Marca:</label>
+                <div class="register-row__error-detail"></div>
+            </div>
+
+            <datalist id="brands">
+                <option class="register-row__option" value="Hasbro">
+                <option class="register-row__option" value="L.O.L. Surprice">
+                <option class="register-row__option" value="Avengers">
+                <option class="register-row__option" value="PAW Patrol">
+                <option class="register-row__option" value="Toy Story">
+                <option class="register-row__option" value="Cars">
+            </datalist>
+
+            <div class="register-form__row">
+                <input class="register-row__input register-row__input--type-text" name="category" id="category" list="categorys" type="text">
+                <label class="register-row__label" for="category">Categoría:</label>
+                <div class="register-row__error-detail"></div>
+            </div>
+
+            <datalist id="categorys">
+                <option class="register-row__option" value="Muñecos y Muñecas">
+                <option class="register-row__option" value="Peluches">
+                <option class="register-row__option" value="Rodados">
+                <option class="register-row__option" value="Juegos de Ingenio">
+                <option class="register-row__option" value="Arte y Manualidades">
+                <option class="register-row__option" value="Instrumentos Musicales">
+                <option class="register-row__option" value="Juguetes de Jardín">
+                <option class="register-row__option" value="juegos de Mesa">
+                <option class="register-row__option" value="Juguetes de Playa">
+                <option class="register-row__option" value="Juguetes de Baño">
+            </datalist>
+
+
+            <div class="register-form__row">
+                <input class="register-row__input register-row__input--type-text" type="text" id="short-description" name="short-description">
+                <label class="register-row__label" for="short-description">Descripción corta:</label>
+                <div class="register-row__error-detail"></div>
+            </div>
+
+            <div class="register-form__row register-form__row--grid">
+                <textarea class="register-row__textarea register-row__input--type-text" name="long-description" id="long-description"></textarea>
+                <label class="register-row__label" for="long-description">Descripción Larga:</label>
+                <div class="register-row__error-detail"></div>
+            </div>
+
+            <div class="register-form__row register-form__row--row">
+                <input class="register-row__checkbox" type="checkbox" name="free-shipping" id="free-shipping">
+                <label class="register-row__label" for="free-shipping">Envío sin cargo</label>
+                <div class="register-row__error-detail"></div>
+            </div>
+
+            <div class="register-form__row u-max-width" id="radio-fields">
+                <span class="register-row__label-age-type">Elije el tipo de Edad:</span>
+                <div class="register-row__age-radio">
+                    <input type="radio" name="age-type" id="months">
+                    <label class="register-row__label" for="months">Meses</label>
+                </div>
+                <div class="register-row__age-radio">
+                    <input type="radio" name="age-type" id="years">
+                    <label for="years" class="register-row__label">Años</label>
+                </div>
+                <div class="register-row__error-detail"></div>
+            </div>
+            
+            <div class="register-form__age-group">
+                <div class="register-form__row">
+                    <input class="register-row__input register-row__input--type-number" type="text" name="age-from" id="age-from">
+                    <label class="register-row__label" for="age-from">Edad desde:</label>
+                    <div class="register-row__error-detail"></div>
+                </div>
+                <div class="register-form__row">
+                    <input class="register-row__input register-row__input--type-number" type="text" name="age-up-to" id="age-up-to">
+                    <label class="register-row__label" for="age-up-to">Edad hasta:</label>
+                    <div class="register-row__error-detail"></div>
+                </div>
+            </div>
+
+            <div class="register-form__row register-form__row--file">
+                <input class="register-row__input-file-type" type="file" name="img" id="img">
+                <label class="register-row__label-file-type" for="img">Foto:</label>
+                <span class="register-row__label-file-name">click en "foto" para seleccionar un archivo.</span>
+                <div class="register-row__error-detail"></div>
+            </div>
+            <div class="register-form__btn-row">
+                <input class="register-form__submit-button" type="submit" value="Crear" data-type="button">
+                <input class="register-form__update-button" type="button" value="Guardar" data-type="button" disabled>
+                <input class="register-form__reset-button" type="reset" value="Restablecer valores" data-type="button">
+            </div>
+        </form>
+
+    </div>
+
+    <!--TODO los estilos de la tabla no estan bien, faltan detalles y tambíen agregar mas funcionalidades, como mostrar la imagen y la descripción larga.-->
+    <section class="register-products-table">
+        <h2 class="register-products__table-heading">Listado de Productos</h2>
+        <div class="register-products__table-container"></div>
+    </section>
+
+</div>

@@ -1,0 +1,49 @@
+{{#if products.length}}
+    <table class="table-products">
+        <caption>Productos</caption>
+        <thead class="table-products__table-head">
+            <tr class="table-head__row">
+                <th class="table-head__header" scope="col">Nombre</th>
+                <th class="table-head__header" scope="col">Precio</th>
+                <th class="table-head__header" scope="col">Stock</th>
+                <th class="table-head__header" scope="col">Marca</th>
+                <th class="table-head__header" scope="col">Categoría</th>
+                <th class="table-head__header" scope="col">Edad desde</th>
+                <th class="table-head__header" scope="col">Edad hasta</th>
+                <th class="table-head__header" scope="col">Descripción Corta</th>
+                <th class="table-head__header" scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="table-products__table-body">
+            {{#each products}}
+                <tr class="table-body__row" 
+                    data-id="{{id}}" data-name="{{name}}" data-price="{{price}}"
+                    data-stock="{{stock}}" data-brand="{{brand}}" data-category="{{category}}"
+                    data-age-from="{{age-from}}" data-age-up-to="{{age-up-to}}"
+                    data-short-description="{{short-description}}"
+                    data-long-description="{{long-description}}" data-img="{{img}}"
+                >
+                    <td class="table-body__data">{{name}}</td>
+                    <td class="table-body__data">{{price}}</td>
+                    <td class="table-body__data">{{stock}}</td>
+                    <td class="table-body__data">{{brand}}</td>
+                    <td class="table-body__data">{{category}}</td>
+                    <td class="table-body__data">{{age-from}}</td>
+                    <td class="table-body__data">{{age-up-to}}</td>
+                    <td class="table-body__data">{{short-description}}</td>
+                    <td class="table-body__data">
+                        <button class="table-body__btn-edit">Editar</button>
+                        <button class="table-body__btn-delete">Eliminar</button>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+        <tfoot class="table-products__table-foot">
+            <tr class="table-foot__row">
+                <td class="table-foot__table-data" colspan="9">Se encontraron {{products.length}} productos</td>
+            </tr>
+        </tfoot>
+    </table>
+{{else}}
+    <p>No se encontraron productos</p>
+{{/if}}

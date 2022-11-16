@@ -1,0 +1,309 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 45%;
+    margin: 0.25em;
+    max-width: 180px;
+    background-color: hsla(0, 0%, 100%, .3);
+    border-radius: 5px;
+    height: 250px;
+    flex-shrink: 0;
+    transition: transform .5s;
+
+    @media (min-width: 400px) {
+        margin: .5em;
+    }
+    
+    @media (min-width: 430px) {
+        margin: .5em;
+    }
+    
+    @media (min-width: 500px) {
+        margin: .6em;
+    }
+    
+    @media (min-width: 530px) {
+        width: 30%;
+        margin: .4em;
+    }
+    
+    
+    @media (min-width: 680px) {
+        margin: .55em;
+    }
+
+    @media (min-width: 768px) {
+        margin: .6em;
+        max-width: 200px;
+    }
+    
+    
+    @media (min-width: 840px) {
+        max-width: 250px;
+        margin: .7em;
+    }
+    
+    @media (min-width: 880px) {
+        max-width: 250px;
+        height: 300px;
+    }
+    
+    @media (min-width: 900px) {
+        margin: .7em;
+    }
+    
+    @media (min-width: 980px) {
+        margin: .75em;
+    }
+    
+    @media (min-width: 1024px) {
+        max-width: 190px;
+        margin: .4em;
+    }
+    
+    @media (min-width: 1050px) {
+        max-width: 200px;
+        margin: .3em;
+    }
+    
+    @media (min-width: 1100px) {
+        margin: .6em;
+    }
+    
+    @media (min-width: 1140px) {
+        margin: .8em;
+    }
+    
+    @media (min-width: 1200px) {
+        max-width: 220px;
+        margin: .6em;
+    }
+    
+    @media (min-width: 1250px) {
+        margin: .8em;
+    }
+    
+    @media (min-width: 1400px) {
+        max-width: 250px;
+        margin: .7em;
+    }
+    
+    &--show .card__description {
+        transform: translateY(-80px);
+        transition: .5s;
+    }
+    
+    &--show .card__link {
+        transform: translateY(55px);
+        transition: transform .5s;
+    }
+    
+    &--show .card__description-paragraph:first-of-type {
+        display: none;
+    }
+    
+    &--show .card__image-container::before {
+        opacity: .6;
+        transition: .5s;
+    }
+
+    &--show .card__heading {
+        color: hsl(258, 86%, 34%);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        margin: 0 auto;
+        font-size: 1.2em;
+        background-color: transparent;
+        font-family: 'Mouse Memoirs', sans-serif;
+
+        
+        @media (min-width: 500px) {
+            font-size: 1.4em;
+        }
+
+        @media (min-width: 1000px) {
+            font-size: 1.5em;
+        }
+        
+    }
+
+    &--show .card__btn-close {
+        display: block;
+    }
+
+    &__image-container {
+        height: 150px;
+        display: flex;
+        align-items: center;
+        padding: .3em;
+        
+        @media (min-width:500px) {
+            padding: .6em;
+
+        }
+        
+        @media (min-width:500px) {
+            padding: .8em;
+
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            background-color: hsl(0, 0%, 100%);
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            left: 0;
+
+        }
+
+        @media (min-width: 880px) {
+            height: 200px;
+        }
+    }
+
+    &__image {
+        display: block;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    &__heading {
+        color: hsl(0, 0%, 100%);
+        padding-bottom: 2em;
+        margin-top: 0;
+        font-size: .9em;
+        text-align: center;
+        background-color: hsla(258, 86%, 34%, .4);
+
+        @media (min-width: 1000px) {
+            font-size: 1.2em;
+        }
+        
+        @media (min-width: 1024px) {
+            font-size: .9em;
+        }
+        
+    }
+
+    &__description {
+        color: #fff;
+        position: absolute;
+        top: 75%;
+        background-color: hsl(276, 91%, 38%);
+        transition: .5s;
+        
+        
+        &-paragraph:first-of-type {
+            font-family: 'Mouse Memoirs', sans-serif;
+            margin: 0;
+            text-align: right;
+            padding: 0.2em;
+            cursor: pointer;
+            
+            @media (min-width: 880px) {
+                margin-top: .4em;
+            }
+            
+        }
+        
+        &-paragraph:nth-of-type(2) {
+            font-family: 'Mouse Memoirs', sans-serif;
+            font-size: 1.1em;
+            background-color: hsl(276, 91%, 30%);
+            border-radius: 5px;
+            padding: 0.3em;
+            padding-bottom: 2em;
+            width: 100%;
+            margin-top: .5em;
+
+            @media (min-width: 768px) {
+                font-size: 1.3em;
+            }
+            
+
+            @media (min-width: 960px) {
+                font-size: 1.4em;
+            }
+            
+        }
+
+    }
+
+    &__price {
+        font-size: 1.4em;
+        padding: 0.2em;
+        display: block;
+        transition: .5s;
+
+        @media (min-width: 880px) {
+            font-size: 1.8em;
+        }
+    }
+
+    &__link {
+        font-family: 'Mouse Memoirs', sans-serif;
+        display: block;
+        position: absolute;
+        border-radius: 5px;
+        color: hsl(276, 91%, 38%);
+        border: 2px solid hsl(258, 86%, 34%);
+        background-color: hsl(171, 62%, 54%);
+        left: 0;
+        right: 0;
+        transition: transform .5s;
+        bottom: 100%;
+        width: 95%;
+        margin: 0 auto;
+        text-align: center;
+        text-decoration: none;
+        padding: .7em;
+        z-index: 1;
+
+        @media (min-width: 768px) {
+            font-size: 1.2em;
+        }
+        
+        &:hover {
+            box-shadow: 0 0 3px hsl(258, 86%, 34%);
+            text-shadow:
+            0 0 1px hsl(0, 0%, 100%),
+            0 0 2px hsl(229, 83%, 65%)
+            ;
+        }
+        
+        &:active {
+            box-shadow: inset 0 0 3px hsl(258, 86%, 34%);
+        }
+        
+    }
+
+    &__btn-close {
+        position: absolute;
+        cursor: pointer;
+        font-size: 1.1em;
+        border-radius: .3em;
+        right: 5%;
+        top: 5%;
+        background-color: transparent;
+        padding: .2em;
+        display: none;
+        color: #fff ;
+        border-style: none;
+
+        &:hover {
+            background-color: hsla(0, 0%, 100%, .3);
+            box-shadow: 0 0 5px 2px hsl(171, 62%, 54%);
+            
+        }
+
+
+    }
+
+}

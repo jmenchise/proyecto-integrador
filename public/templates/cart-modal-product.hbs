@@ -1,0 +1,26 @@
+{{#if cartProducts.length}}
+    {{#each cartProducts}}
+        <div class="cart-modal__card-container">
+            <div class="cart-modal__card" data-id="{{id}}" data-price="{{price}}">
+                <div class="cart-modal__card-image-container">
+                    <img src="/tmp/uploads/{{img}}" alt="" class="cart-modal__card-image">
+                </div>
+                <div class="cart-modal__card-content">
+                    <h2 class="cart-modal__card-name">{{name}}</h2>
+                    <p class="cart-modal__card-price">$<span class="cart-modal__card-price-value">{{price}}</span></p>
+                    <div class="cart-modal__count-container">
+                        <p class="cart-modal__count-text">Cantidad:</p>
+                        <button class="cart-modal__btn-count-res">-</button>
+                        <span class="cart-modal__count">{{count}}</span>
+                        <button class="cart-modal__btn-count-add">+</button>
+                    </div>
+                </div>
+                <div class="cart-modal__delete-card-btn">
+                    <img class="cart-modal__delete-card-image" src="css/img/trash_icon.png" alt="" title="Eliminar producto">
+                </div>
+            </div>
+        </div>
+    {{/each}}
+{{else}}
+    <h2>El carrito está vacío.</h2>
+{{/if}}

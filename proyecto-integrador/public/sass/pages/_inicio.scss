@@ -1,0 +1,296 @@
+
+.section-cards {
+    
+    &__header {
+        font-size: 1.2em;
+        text-align: center;
+        color: #fff;
+        
+        @media(min-width: 400px) {
+            font-size: 1.6em;
+
+        }
+    }
+
+    &__heading {
+        text-shadow: 0 0 10px hsl(0, 0%, 80%);
+        margin-bottom: 1.5em;
+
+        &::before {
+            content: "";
+            position: relative;
+            bottom: .4em;
+            display: block;
+            width: 60%;
+            margin: 0 auto;
+            border-top: 2px solid hsl(194, 85%, 62%);
+            box-shadow: 0 0 5px 3px hsl(194, 85%, 62%);
+        }
+        
+        
+        &::after {
+            content: "";
+            position: relative;
+            top: .4em;
+            display: block;
+            width: 80%;
+            margin: 0 auto;
+            border-top: 2px solid hsl(194, 85%, 62%);
+            box-shadow: 0 0 5px 3px hsl(194, 85%, 62%);
+        }
+        
+        
+    }
+    
+
+    &__icons {
+        margin-top: 2em;
+        margin-bottom: 2em;
+        width: 100%;
+        display: flex;
+        box-shadow: 0 0 5px 4px hsl(194, 85%, 62%);
+        border-radius: .7em;
+        overflow: hidden;
+        flex-wrap: wrap;
+    }
+
+    &__icon-content {
+        flex-basis: 50%;
+        
+        @media(min-width: 540px) {
+            flex-basis: 25%;
+        }
+
+        &:nth-of-type(odd) > .section-cards__icon-container {
+            background-color: hsla(276, 91%, 38%, .4);
+        }
+        
+
+        &:nth-of-type(even) > .section-cards__icon-container {
+            background-color: hsla(258, 86%, 34%, .4);
+        }
+
+        &:nth-of-type(odd) > .section-cards__icon-paragraph {
+            background-color: hsla(258, 86%, 34%, .4);
+        }
+
+        &:nth-of-type(even) > .section-cards__icon-paragraph {
+            background-color: hsla(276, 91%, 38%, .4);
+        }
+
+    }
+
+    &__icon {
+        width: 90%;
+        display: block;
+        margin: 0 auto;
+    }
+
+
+    &__icon-paragraph {
+        margin: 0;
+        text-align: center;
+        padding-left: 0.3em;
+        padding-right: 0.3em;
+        padding-bottom: 0.3em;
+        color: hsl(171, 62%, 54%);
+        text-shadow: 0 0 5px hsl(171, 62%, 54%);
+
+
+
+        @media (min-width: 540px) {
+            font-size: .8em;
+        }
+        
+        @media (min-width: 1024px) {
+            font-size: 1em;
+        }
+    }
+
+
+
+
+
+
+    &__sale-container,
+    &__popular-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 3em;
+        margin-top: 3em;
+        display: flex;
+        background-color: hsl(229, 83%, 60%);
+        gap: .8em;
+        border-radius: .7em;
+        box-shadow: 0 0 5px 5px hsl(229, 83%, 70%);
+
+        @media (min-width: 400px) {
+            gap: 0;
+        }
+        
+    }
+
+
+
+    &__promotion {
+        display: none;
+        background-image: url('img/bg-promotion.png');
+        background-attachment: fixed;
+        background-size: cover;
+        margin-bottom: 3em;
+        border-radius: .7em;
+        box-shadow: 0 0 5px 4px hsl(276, 91%, 70%);
+        width: 100%;
+        height: 300px;
+        gap: 1em;
+        
+
+        &-img-container {
+            height: 100%;
+            display: flex;
+        }
+
+        &-img {
+            display: block;
+            height: 80%;
+            margin: auto;
+        }
+
+        &-paragraph-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        &-paragraph {
+            font-size: 1.5em;
+            color: #fff;
+            text-shadow:
+            0 0 5px hsl(194, 85%, 42%),
+            0 0 8px hsl(0, 0%, 80%)
+            ;
+            
+            @media (min-width: 800px) {
+                font-size: 1.7em;
+            }
+
+            &:first-of-type {
+                font-size: 2em;
+                
+                @media(min-width: 800px) {
+                    font-size: 2.4em;
+                }
+            }
+        }
+
+        @media(min-width: 768px) {
+            display: flex;
+        }
+    }
+    
+
+    &__all-cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: hsl(229, 83%, 60%);
+        box-shadow: 0 0 5px 5px hsl(229, 83%, 70%);
+        border-radius: .7em;
+
+    }
+
+
+
+
+    
+    &__heading-sale,
+    &__heading-popular,
+    &__heading-all-cards,
+    &__heading-categories,
+    &__heading-brands {
+        color: #fff;
+        text-shadow: 0 0 10px hsl(0, 0%, 80%);
+        text-align: center;
+        font-size: 1.8em;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 85%;
+            margin: 0 auto;
+            left: 0%;
+            right: 0;
+            display: block;
+            border-top: 2px solid hsl(194, 85%, 62%);
+            margin-top: .3em;
+            box-shadow: 0 0 5px 3px hsl(194, 85%, 62%);
+        }
+    }
+
+    &__heading-categories,
+    &__heading-brands {
+        margin-bottom: 2em;
+    }
+
+    &__categories-container {
+        background-color: hsl(229, 83%, 60%);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 3em;
+        width: 100%;
+        box-shadow: 0 0 5px 4px hsl(194, 85%, 62%);
+        border-radius: .7em;
+        overflow: hidden;
+        
+        @media(min-width: 620px) {
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+
+    
+
+    &__brands-container {
+        display: grid;
+        gap: 1em;
+        background-color: hsla(0, 0%, 100%, .3);
+        box-shadow: 0 0 5px 4px hsl(194, 85%, 62%);
+        border-radius: .7em;
+        grid-template-rows: 1fr 1fr;
+        margin-bottom: 3em;
+        width: 100%;
+        
+        @media(min-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        
+        
+
+    }
+    
+    
+    &__footer {
+
+        &-paragraph{
+            font-family: 'Mouse Memoirs', sans-serif;
+            font-size: 1.3em;
+            color: hsl(0, 0%, 80%);
+            text-align: center;
+
+            @media (min-width: 425px) {
+                font-size: 1.6em;
+            }
+            
+
+            @media (min-width: 425px) {
+                font-size: 1.6em;
+            }
+
+        }
+        
+    }
+    
+    
+}
+

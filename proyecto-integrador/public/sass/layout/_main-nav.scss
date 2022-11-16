@@ -1,0 +1,107 @@
+.main-nav {
+
+    &__button-container {
+        display: none;
+
+        @media (min-width: 768px){
+            display: block;
+            
+        }
+    }
+    
+    &__button-container--show {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+
+    }
+
+    &__button-container--show &__button{
+        display: inline;
+        position: relative;
+        left: 0%;
+        top: 0;
+
+    } 
+
+    &__button{
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        left: 5%;
+        color: #fff;
+    }
+
+    &__button:first-of-type{
+        top: 20%;
+    }
+    
+    &__button:nth-of-type(2){
+        top: 40%;
+    }
+    
+    &__button:nth-of-type(3){
+        top: 60%;
+    }
+    
+    &__button:nth-of-type(4){
+        top: 80%;
+    }
+
+
+
+    
+    &__list{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__item {
+        display: block;
+        text-align: center;
+        
+        @media(min-width: 768px){
+            width: 200px;
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        font-size: 1.1em;
+        display: block;
+        width: 100%;
+        padding: .4em;
+        user-select: none;
+        color: hsl(194, 85%, 62%);
+        
+        &:hover,
+        &:focus {
+            text-shadow: 
+            0 0 3px hsl(194, 85%, 62%),
+            0 0 5px hsl(0, 0%, 100%)
+            ;
+            
+        }
+        
+        &--selected {
+            text-shadow: 
+            0 0 3px hsl(194, 85%, 62%),
+            0 0 5px hsl(0, 0%, 100%)
+            ;
+            
+        }
+        
+        
+        @media(min-width:768px) {
+            color: hsl(292, 37%, 72%);
+            font-size: 1.3em;
+            padding: 1em;
+        }
+    }
+
+
+
+}

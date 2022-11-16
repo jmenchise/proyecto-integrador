@@ -1,0 +1,22 @@
+.logo__image {
+
+    &-header {
+        display: block;
+        width: 85%;
+        height: 80%;
+    }
+    
+    &-footer {
+        display: block;
+        width: 40%;
+
+        @media (min-width: 387px) {
+            height: auto;
+        }
+        
+        @media (min-width: 768px) {
+            width: 85%;
+        }
+
+    }
+}
