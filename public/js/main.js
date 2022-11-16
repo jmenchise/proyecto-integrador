@@ -5,6 +5,12 @@ class Main {
     =              Código de la SPA               =
     =============================================*/
     
+    loadTitle(id) {
+        const titleElement = document.querySelector('title');
+        const titleFirstLetter = id.charAt(0);
+        const title = `${id.replace(titleFirstLetter, titleFirstLetter.toUpperCase())} - Juguetería Cósmica`;
+        titleElement.innerHTML = title;
+    }
 
     getIdFromHash() {
         let id = location.hash.slice(1);
@@ -54,17 +60,17 @@ class Main {
             console.error(`Error al intentar importar el módulo ${moduleUrl}. Detalle: ${error.message}`);
         }
     }
-
+    
     async getTemplate() {
         const id = this.getIdFromHash();
         const url = this.getUrlFromId(id);
-
+        
         const page = await this.ajax(url);
         document.querySelector('.main-content').innerHTML = page;
-
+        
         this.setActiveLink(id);
-
         this.initJS(id);
+        this.loadTitle(id);
     }
 
 

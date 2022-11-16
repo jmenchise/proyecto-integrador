@@ -18,15 +18,15 @@ class Cart {
 
     /* Transforma los nodeList en Array para poder utilizar los métodos find() y some() */
     static transformNodeListToArray() {
-        const cardsCount = Cart.cartModal.querySelectorAll('.cart-modal__card');
-        return Array.from(cardsCount);
+        const cartProductNodeList = Cart.cartModal.querySelectorAll('.cart-modal__card');
+        return Array.from(cartProductNodeList);
     };
 
     /* Verifica si la card ya existe en el carrito o no
     -------------------------------------------------- */
     static findProductInCart(id) {
-        const CartProductHtmlCollection = Cart.transformNodeListToArray();
-        return CartProductHtmlCollection.some(product => product.dataset.id === id);
+        const CartProductArray = Cart.transformNodeListToArray();
+        return CartProductArray.some(product => product.dataset.id === id);
     };
 
 
@@ -37,11 +37,11 @@ class Cart {
     }
 
 
-    static getCountNumberFromCard(e) {
+    static getCardCountNumberFromEvent(e) {
         const card = e.target.closest('.cart-modal__card');
-        const countElement = card.querySelector('.cart-modal__count');
-        const countNumber = Number(countElement.innerHTML);
-        return countNumber;
+        const cardCountElement = card.querySelector('.cart-modal__count');
+        const cardCountNumber = Number(cardCountElement.innerHTML);
+        return cardCountNumber;
     }
 
     /* Suma la cuenta del producto
@@ -84,14 +84,14 @@ class Cart {
     static async cartProductsCounter() {
         const cartProducts = await cartProductController.getCartProducts();
         await Cart.renderTemplateCart(cartProducts);
-        const cartProductsHtmlCollection = Cart.transformNodeListToArray();
-        const _cartButtonCount = document.querySelector('.main-header__cart-button-count');
-        const _cartButtonCountContainer = document.querySelector('.main-header__cart-button-count-container');
+        const cartProductsArray = Cart.transformNodeListToArray();
+        const _cartCount = document.querySelector('.main-header__cart-button-count');
+        const _cartCountContainer = document.querySelector('.main-header__cart-button-count-container');
         const _totalPrice = document.querySelector('.cart-modal__total-price-number');
 
         if (cartProducts.length === 0) {
-            _cartButtonCount.innerHTML = '';
-            _cartButtonCountContainer.classList.remove('main-header__cart-button-count-container--show');
+            _cartCount.innerHTML = '';
+            _cartCountContainer.classList.remove('main-header__cart-button-count-container--show');
             _totalPrice.innerHTML = '';
             return;
         };
@@ -99,7 +99,7 @@ class Cart {
         let newCounter = 0;
         let totalPriceNumber = 0;
 
-        for (const product of cartProductsHtmlCollection) {
+        for (const product of cartProductsArray) {
             const countElement = product.querySelector('.cart-modal__count');
             const priceElement = product.querySelector('.cart-modal__card-price-value');
             let countNumber = Number(countElement.innerHTML);
@@ -112,11 +112,11 @@ class Cart {
             newCounter += countNumber;
             totalPriceNumber += priceNumber;
             /* Se actaliza la suma total y la cant total de elementos en el carrito */
-            _cartButtonCount.innerHTML = newCounter;
+            _cartCount.innerHTML = newCounter;
             _totalPrice.innerHTML = totalPriceNumber;
         };
 
-        _cartButtonCountContainer.classList.add('main-header__cart-button-count-container--show');
+        _cartCountContainer.classList.add('main-header__cart-button-count-container--show');
     };
     
 
@@ -172,7 +172,7 @@ class Cart {
             -------------------------------------------------- */
             if (e.target.classList.contains('cart-modal__btn-count-res')) {
                 const id = Cart.getIdFromCard(e, '.cart-modal__card')
-                if (Cart.getCountNumberFromCard(e) > 1) {
+                if (Cart.getCardCountNumberFromEvent(e) > 1) {
                     const updatedProduct = await Cart.reduceCountToProduct(id);
                     console.log('updatedProduct:', updatedProduct)
                 };
