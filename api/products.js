@@ -1,4 +1,4 @@
-import productModel from "../model/products-MongoDb.js";
+import productModel from "/model/products-MongoDb.js";
 
 
 class ProductApi {
