@@ -4,13 +4,7 @@ class Main {
     /*=============================================
     =              Código de la SPA               =
     =============================================*/
-    
-    loadTitle(id) {
-        const titleElement = document.querySelector('title');
-        const titleFirstLetter = id.charAt(0);
-        const title = `${id.replace(titleFirstLetter, titleFirstLetter.toUpperCase())} - Juguetería Cósmica`;
-        titleElement.innerHTML = title;
-    }
+
 
     getIdFromHash() {
         let id = location.hash.slice(1);
@@ -20,18 +14,21 @@ class Main {
         return id || 'inicio';
     }
 
+
     getUrlFromId(id) {
         return `views/${id}.html`;
     } 
+
 
     getModulesFromId(id) {
         return `./modules/${id}.js`;
     }
 
+
     async ajax(url) {
         return await fetch(url, { method: 'get' }).then(r => r.text());
     }
-    
+
 
     setActiveLink(id) {
         const navLinks = document.querySelectorAll('.main-nav__link');
@@ -47,6 +44,7 @@ class Main {
         });
     }
 
+
     async initJS(id) {
         const moduleUrl = this.getModulesFromId(id);
         try {
@@ -60,7 +58,16 @@ class Main {
             console.error(`Error al intentar importar el módulo ${moduleUrl}. Detalle: ${error.message}`);
         }
     }
-    
+
+
+    loadTitle(id) {
+        const titleElement = document.querySelector('title');
+        const titleFirstLetter = id.charAt(0);
+        const title = `${id.replace(titleFirstLetter, titleFirstLetter.toUpperCase())} - Juguetería Cósmica`;
+        titleElement.innerHTML = title;
+    }
+
+
     async getTemplate() {
         const id = this.getIdFromHash();
         const url = this.getUrlFromId(id);
@@ -86,14 +93,11 @@ class Main {
     /*                              CODIGO PARA LA MAIN NAV                            */
     /*                                                                                 */
     /***********************************************************************************/
-
     mainNav() {
-        
         const _mainNavContainer = document.querySelector('.main-header__main-nav-container');
         const btnContainer = document.querySelector('.main-nav__button-container');
 
         document.body.addEventListener('click', e => {
-
             if(e.target === _mainNavContainer || e.target.classList.contains('main-nav__button')){
                 _mainNavContainer.classList.add('main-header__main-nav-container--visible');
                 btnContainer.classList.add('main-nav__button-container--show');
@@ -101,7 +105,6 @@ class Main {
                 _mainNavContainer.classList.remove('main-header__main-nav-container--visible');
                 btnContainer.classList.remove('main-nav__button-container--show');
             };
-            
         });
 
         //////////////////////////////////////////////////////////////
@@ -109,31 +112,21 @@ class Main {
         //    RESETEO POR SI EL HAMBURGER BUTTON QUEDA ACCIONADO    //
         //                                                          //
         //////////////////////////////////////////////////////////////
-
         window.addEventListener('resize', () => {
-
             if (innerWidth > 767) {
                 document.querySelector('.main-nav-toggle').checked = false;
             } else {
                 _mainNavContainer.classList.remove('main-header__main-nav-container--visible');
             };
-
         });
-
-
-
-
     }
 
 
-    
     async start() {
         await this.loadTemplates();
         this.mainNav();
         Cart.init();
     }
-    
-    
 };
 
 
