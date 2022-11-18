@@ -15,7 +15,7 @@
     }
     
     &:nth-of-type(4n+2) {
-        background-color: hsla(276, 91, 38, .4);
+        background-color: hsla(276, 91%, 38%, .4);
         
         & .categories__paragraph::first-letter {
             color: hsl(171, 62%, 54%);
@@ -24,7 +24,7 @@
     }
 
     &:nth-of-type(4n+3) {
-        background-color: hsla(276, 91, 38, .4);
+        background-color: hsla(276, 91%, 38%, .4);
         
         & .categories__paragraph::first-letter {
             color: hsl(171, 62%, 54%);
@@ -54,7 +54,7 @@
         }
 
         &:nth-of-type(even) {
-            background-color: hsla(276, 91, 38, .4);
+            background-color: hsla(276, 91%, 38%, .4);
 
             & .categories__paragraph::first-letter {
                 color: hsl(171, 62%, 54%);
