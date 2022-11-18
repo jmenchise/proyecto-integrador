@@ -125,7 +125,7 @@ class Main {
     async start() {
         await this.loadTemplates();
         this.mainNav();
-        Cart.init();
+        await Cart.init();
     }
 };
 

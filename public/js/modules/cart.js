@@ -7,6 +7,7 @@ class Cart {
     static cartButtonCountContainer
     static cartButtonCount
     static totalPrice
+    static cartNotification
 
 
     static async renderTemplateCart(cartProducts) {
@@ -18,8 +19,8 @@ class Cart {
 
     /* Transforma los nodeList en Array para poder utilizar los métodos find() y some() */
     static transformNodeListToArray() {
-        const cartProductNodeList = Cart.cartModal.querySelectorAll('.cart-modal__card');
-        return Array.from(cartProductNodeList);
+        const cartProductArray = Cart.cartModal.querySelectorAll('.cart-modal__card');
+        return Array.from(cartProductArray);
     };
 
     /* Verifica si la card ya existe en el carrito o no
@@ -78,6 +79,7 @@ class Cart {
         await Cart.cartProductsCounter();
         return savedCartProduct;
     }
+
 
     /* Cuenta de productos del carrito
     -------------------------------------------------- */
@@ -186,6 +188,7 @@ class Cart {
     static async init() {
         Cart.cartBtn = document.querySelector('.main-header__cart-button-container');
         Cart.cartModal = document.querySelector('.cart-modal-container');
+        Cart.cartNotification = document.querySelector('.cart-modal__cart-notification');
 
         const cartProducts = await cartProductController.getCartProducts();
         console.log(`Se encontraron ${cartProducts.length} productos en el carrito.`);

@@ -291,7 +291,6 @@
         
     }
     
-
     &__cart-notification {
         padding: 0.5em;
         position: fixed;
@@ -301,7 +300,7 @@
         border-radius: .3em;
         box-shadow: 0 0 5px 4px hsl(194, 85%, 62%);
         background-color: hsla(171, 62%, 65%, 0.7);
-        transition: all .4s;
+        transition: all .8s;
 
 
         &-paragraph {
@@ -311,10 +310,11 @@
         }
 
 
-        &__cart-notification--visible {
+        &--visible {
             top: 90%;
-            transition: all .4s;
+            transition: all .8s;
         }
     }
+
 }
 

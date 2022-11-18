@@ -6,6 +6,9 @@ import Cart from './cart.js';
 
 class PageInicio {
 
+    static cartNotification
+
+
     static async renderTemplateCard(ObjToRender, containerSelector, hbsFile) {
         const textToCompile = await fetch(`templates/${hbsFile}.hbs`).then(r => r.text());
         const template = Handlebars.compile(textToCompile);
@@ -65,6 +68,15 @@ class PageInicio {
     }
 
 
+    static showCartNotification() {
+        const cartNotification = document.querySelector('.section-cards__cart-notification');
+        cartNotification.classList.add('section-cards__cart-notification--visible');
+        setTimeout( () => {
+            cartNotification.classList.remove('section-cards__cart-notification--visible');
+        }, 2500);
+
+    }
+
     static cards() {
 
         document.querySelector('.section-cards').addEventListener('click', async e => {
@@ -97,6 +109,7 @@ class PageInicio {
                     const updatedCartProduct = await Cart.addCountToProduct(id);
                     console.log('updatedCartProduct:', updatedCartProduct);
                 };
+                PageInicio.showCartNotification();
             };
         });
     }

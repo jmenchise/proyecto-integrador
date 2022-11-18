@@ -2769,16 +2769,16 @@ body {
   border-radius: 0.3em;
   box-shadow: 0 0 5px 4px hsl(194deg, 85%, 62%);
   background-color: hsla(171deg, 62%, 65%, 0.7);
-  transition: all 0.4s;
+  transition: all 0.8s;
 }
 .section-cards__cart-notification-paragraph {
   margin: 0;
   color: hsl(276deg, 91%, 38%);
   font-size: 1.2em;
 }
-.section-cards__cart-notification__cart-notification--visible {
+.section-cards__cart-notification--visible {
   top: 90%;
-  transition: all 0.4s;
+  transition: all 0.8s;
 }
 
 .register-content {
