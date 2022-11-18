@@ -2,7 +2,10 @@
 
     &-products {
         max-width: 100%;
-        overflow: hidden;
+        border: 2px solid hsl(276, 91%, 70%);
+        border-collapse: collapse;
+        border-radius: 1em
+
         
     }
 
