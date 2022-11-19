@@ -327,6 +327,10 @@ body {
   }
 }
 
+.u-text-center {
+  text-align: center !important;
+}
+
 .contact-form-container {
   border-radius: 0.7em;
   margin: 0 auto;
@@ -2304,7 +2308,7 @@ body {
 }
 
 .cart-modal__content {
-  overflow: scroll;
+  overflow-y: scroll;
   padding: 0.3em;
   padding-bottom: 1em;
   min-height: 200px;
@@ -2494,12 +2498,17 @@ body {
 
 .table-products {
   max-width: 100%;
-  border: 2px solid hsl(276deg, 91%, 70%);
   border-collapse: collapse;
   border-radius: 1em;
 }
 .table-head__row {
+  color: hsl(0deg, 0%, 100%);
   background-color: hsl(229deg, 83%, 60%);
+  box-shadow: inset 0 0 5px 2px hsla(0deg, 0%, 100%, 0.3);
+}
+.table-head__header {
+  padding: 1em;
+  padding-left: 0;
 }
 .table-body__row:nth-last-of-type(odd) {
   background-color: hsla(229deg, 83%, 60%, 0.4);
@@ -2510,6 +2519,26 @@ body {
 }
 .table-body__data {
   padding: 0.7em;
+  color: hsl(0deg, 0%, 80%);
+}
+.table-body__btn-edit, .table-body__btn-delete {
+  background-color: hsla(0deg, 100%, 100%, 0.8);
+  border-radius: 0.3em;
+  border-color: hsla(0deg, 100%, 100%, 0.8);
+  cursor: pointer;
+  padding: 0;
+  width: 35%;
+}
+.table-body__btn-edit:hover, .table-body__btn-delete:hover {
+  background-color: hsl(0deg, 100%, 100%);
+  box-shadow: 0 0 10px hsl(258deg, 86%, 34%);
+}
+.table-body__btn-edit:active, .table-body__btn-delete:active {
+  background-color: hsl(0deg, 100%, 100%);
+  box-shadow: 0 0 10px hsl(258deg, 86%, 34%);
+}
+.table-body__btn-edit-image, .table-body__btn-delete-image {
+  width: 100%;
 }
 
 .register-products__table-heading,
@@ -2518,6 +2547,29 @@ body {
   text-align: center;
   color: #fff;
   margin-bottom: 1.5em;
+}
+
+.register-products__table-heading::before {
+  content: "";
+  position: relative;
+  bottom: 0.4em;
+  display: block;
+  width: 35%;
+  max-width: 700px;
+  margin: 0 auto;
+  border-top: 2px solid hsl(194deg, 85%, 62%);
+  box-shadow: 0 0 5px 3px hsl(194deg, 85%, 62%);
+}
+.register-products__table-heading::after {
+  content: "";
+  position: relative;
+  top: 0.4em;
+  display: block;
+  width: 50%;
+  max-width: 700px;
+  margin: 0 auto;
+  border-top: 2px solid hsl(194deg, 85%, 62%);
+  box-shadow: 0 0 5px 3px hsl(194deg, 85%, 62%);
 }
 
 body {

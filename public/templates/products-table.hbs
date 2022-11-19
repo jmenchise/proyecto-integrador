@@ -1,6 +1,5 @@
-{{#if products.length}}
+ {{#if products.length}}
     <table class="table-products">
-        <caption>Productos</caption>
         <thead class="table-products__table-head">
             <tr class="table-head__row">
                 <th class="table-head__header" scope="col">Nombre</th>
@@ -22,18 +21,23 @@
                     data-age-from="{{age-from}}" data-age-up-to="{{age-up-to}}"
                     data-short-description="{{short-description}}"
                     data-long-description="{{long-description}}" data-img="{{img}}"
+                    data-free-shipping="{{free-shipping}}"
                 >
                     <td class="table-body__data">{{name}}</td>
                     <td class="table-body__data">{{price}}</td>
                     <td class="table-body__data">{{stock}}</td>
                     <td class="table-body__data">{{brand}}</td>
                     <td class="table-body__data">{{category}}</td>
-                    <td class="table-body__data">{{age-from}}</td>
-                    <td class="table-body__data">{{age-up-to}}</td>
+                    <td class="table-body__data u-text-center">{{age-from}}</td>
+                    <td class="table-body__data u-text-center">{{age-up-to}}</td>
                     <td class="table-body__data">{{short-description}}</td>
                     <td class="table-body__data">
-                        <button class="table-body__btn-edit">Editar</button>
-                        <button class="table-body__btn-delete">Eliminar</button>
+                        <button class="table-body__btn-edit">
+                            <img class="table-body__btn-edit-image" src="css/img/edit_icon.png" alt="" title="Editar producto">
+                        </button>
+                        <button class="table-body__btn-delete">
+                            <img class="table-body__btn-delete-image" src="css/img/trash_icon.png" alt="" title="eliminar producto">
+                        </button>
                     </td>
                 </tr>
             {{/each}}

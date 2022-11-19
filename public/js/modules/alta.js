@@ -93,7 +93,11 @@ class PageAlta {
     static completeForm(product) {
         PageAlta.fields.forEach(field => {
             field.value = product[field.name];
-            field.closest('.register-form__row').classList.add('register-form__row--show-content');
+            if (field.type === 'checkbox') {
+                field.checked = field.value === 'true' ? true : false;
+            } else {
+                field.closest('.register-form__row').classList.add('register-form__row--show-content');
+            }
         });
         //TODO Agregar que tanto el checkbox y el tipo de edad se carguen automáticamente.
     }
@@ -417,7 +421,8 @@ class PageAlta {
                 'age-from': row.dataset.ageFrom,
                 'age-up-to': row.dataset.ageUpTo,
                 'short-description': row.dataset.shortDescription,
-                'long-description': row.dataset.longDescription
+                'long-description': row.dataset.longDescription,
+                'free-shipping': row.dataset.freeShipping,
             };
             PageAlta.completeForm(productToEdit);
             const imgFile = {'name': row.dataset.img};
@@ -429,11 +434,11 @@ class PageAlta {
         
 
         document.addEventListener('click', e => {
-            if (e.target.classList.contains('table-body__btn-delete')) {
+            if (e.target.classList.contains('table-body__btn-delete-image')) {
                 deleteProduct(e);
                 return;
             }
-            if (e.target.classList.contains('table-body__btn-edit')) {
+            if (e.target.classList.contains('table-body__btn-edit-image')) {
                 editProduct(e);
                 return;
             }
