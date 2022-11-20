@@ -63,12 +63,12 @@ class PageAlta {
         },
     };
 
-    
+
     static setLabelfileName(imgFile) {
         const fileSpan = document.querySelector('.register-row__label-file-name');
         fileSpan.innerHTML = imgFile.name || 'click en "foto" para seleccionar un archivo.'
     }
-    
+
 
     static getFileNameFromLabel() {
         const fileSpan = document.querySelector('.register-row__label-file-name');
@@ -76,10 +76,20 @@ class PageAlta {
     }
 
 
+    static addClassShowcontent(field) {
+        field.closest('.register-form__row').classList.add('register-form__row--show-content');
+    }
+
+
+    static removeClassShowcontent(field) {
+        field.closest('.register-form__row').classList.remove('register-form__row--show-content');
+    }
+
+
     static emptyForm() {
         PageAlta.fields.forEach(field => {
             field.value = ''
-            field.closest('.register-form__row').classList.remove('register-form__row--show-content');
+            PageAlta.removeClassShowcontent(field);
             if (field.type === 'checkbox') {
                 field.checked = false;
             };
@@ -93,13 +103,18 @@ class PageAlta {
     static completeForm(product) {
         PageAlta.fields.forEach(field => {
             field.value = product[field.name];
+
             if (field.type === 'checkbox') {
-                field.checked = field.value === 'true' ? true : false;
-            } else {
-                field.closest('.register-form__row').classList.add('register-form__row--show-content');
+                field.checked = (field.value === 'true' ? true : false);
+            } 
+            if(field.id === 'radio-fields') {
+                const radioInput = field.querySelector(`#${product['age-type']}`);
+                radioInput.checked = true;
+            } 
+            if ((field.type !== 'checkbox') && (field.id !== 'radio-fields')) {
+                PageAlta.addClassShowcontent(field);
             }
         });
-        //TODO Agregar que tanto el checkbox y el tipo de edad se carguen automáticamente.
     }
 
 
@@ -199,7 +214,6 @@ class PageAlta {
     static validateFileField(imgFile) {
         const inputId = PageAlta.fileField.id;
         let message = ''
-
         if (!imgFile) {
             message = 'Debe cargar la imagen.'
             PageAlta.setCustomValidityForm(message, inputId);
@@ -290,26 +304,36 @@ class PageAlta {
     }
 
 
+    static async removeImgToReplace(productToUpdate) {
+        const productName = productToUpdate.name;
+        const row = document.querySelector(`[data-name="${productName}"]`);
+        const { img } = row.dataset
+        const deletedProductImg = await productController.deleteProductImg(img);
+        console.log('deletedProductImg:', deletedProductImg)
+    }
+
+
     static addFormEvents() {
         PageAlta.form.addEventListener('focusout', e => {
-            //TODO factorear todo este código urgente!!!!!!!
             const field = e.target;
 
             if (field.dataset.type === 'button') {
                 return;
             };
             PageAlta.validateField(field, PageAlta.validators[field.name]);
+
             if (!field.value) {
-                field.closest('.register-form__row').classList.remove('register-form__row--show-content');
+                PageAlta.removeClassShowcontent(field);
             } else if (field.classList.contains(PageAlta.typeText) || field.classList.contains(PageAlta.typeNumber)){ 
-                    field.closest('.register-form__row').classList.add('register-form__row--show-content');
+                PageAlta.addClassShowcontent(field);
             }
         });
 
         PageAlta.form.addEventListener('focusin', e => {
             const field = e.target;
+
             if (field.classList.contains(PageAlta.typeText) || field.classList.contains(PageAlta.typeNumber)) {
-                field.closest('.register-form__row').classList.remove('register-form__row--show-content');
+                PageAlta.removeClassShowcontent(field);
             }
         });
 
@@ -338,6 +362,7 @@ class PageAlta {
 
             for(const field of PageAlta.fields) {
                 PageAlta.setCustomValidityForm(message, field.id);
+                PageAlta.removeClassShowcontent(field);
             };
             PageAlta.setCustomValidityForm(message, PageAlta.fileField.id);
             const imgFile = false;
@@ -350,19 +375,15 @@ class PageAlta {
         PageAlta.btnUpdate.addEventListener('click', async e => {
             let productToUpdate = PageAlta.validateForm();
             let imgValidated = true;
+            const imgToUpdate = PageAlta.fileField.files[0];
 
-            if(PageAlta.fileField.files[0]) {
-                imgValidated = PageAlta.validateFileField(PageAlta.fileField.files[0]);
+            if(imgToUpdate) {
+                imgValidated = PageAlta.validateFileField(imgToUpdate);
             }
 
             if (productToUpdate && imgValidated) {
-                //TODO separar en una función aparte. mucho código suelto.
-                if (PageAlta.fileField.files[0]) {
-                    const productName = productToUpdate.name;
-                    const row = document.querySelector(`[data-name="${productName}"]`);
-                    const { img } = row.dataset
-                    const deletedProductImg = await productController.deleteProductImg(img);
-                    console.log('deletedProductImg:', deletedProductImg)
+                if (imgToUpdate) {
+                    PageAlta.removeImgToReplace(productToUpdate);
                 }
                 productToUpdate = await PageAlta.addImgToProduct(productToUpdate);
                 const updatedProduct = await PageAlta.updateProduct(productToUpdate);
@@ -420,6 +441,7 @@ class PageAlta {
                 'category': row.dataset.category,
                 'age-from': row.dataset.ageFrom,
                 'age-up-to': row.dataset.ageUpTo,
+                'age-type': row.dataset.ageType,
                 'short-description': row.dataset.shortDescription,
                 'long-description': row.dataset.longDescription,
                 'free-shipping': row.dataset.freeShipping,

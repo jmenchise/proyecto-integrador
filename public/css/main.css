@@ -1199,6 +1199,7 @@ body {
   box-shadow: 0 0 5px 4px hsl(194deg, 85%, 62%);
   border-radius: 0.7em;
   width: 100%;
+  overflow-x: scroll;
 }
 
 .hamburger-button {
