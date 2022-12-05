@@ -69,10 +69,9 @@ class PageInicio {
 
 
     static showCartNotification() {
-        const cartNotification = document.querySelector('.section-cards__cart-notification');
-        cartNotification.classList.add('section-cards__cart-notification--visible');
+        PageInicio.cartNotification.classList.add('section-cards__cart-notification--visible');
         setTimeout( () => {
-            cartNotification.classList.remove('section-cards__cart-notification--visible');
+            PageInicio.cartNotification.classList.remove('section-cards__cart-notification--visible');
         }, 2500);
 
     }
@@ -121,6 +120,7 @@ class PageInicio {
         const products = await productController.getProducts();
         console.log(`Se encontraron ${products.length} productos`);
         await PageInicio.renderTemplateCard({products}, '.section-cards__all-cards-container', 'product-card');;
+        PageInicio.cartNotification = document.querySelector('.section-cards__cart-notification');
         PageInicio.carousel();
         PageInicio.cards();
     }

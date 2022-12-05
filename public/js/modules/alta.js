@@ -224,7 +224,7 @@ class PageAlta {
             PageAlta.setCustomValidityForm(message, inputId);
             return false;
         }
-
+        console.log('imgFile size:', imgFile.size);
         PageAlta.setCustomValidityForm(message, inputId);
         return true;
     }
@@ -294,9 +294,6 @@ class PageAlta {
     static async addImgToProduct(product) {
         const imgFile = new FormData();
         const imgToUpload = PageAlta.fileField.files[0];
-        if (!imgToUpload) {
-            return product;
-        };
         imgFile.append('img', imgToUpload);
         const uploadedProductImg = await PageAlta.uploadProductImg(imgFile);
         product.img = uploadedProductImg.filename;
@@ -340,7 +337,7 @@ class PageAlta {
         PageAlta.form.addEventListener('submit', async e => {
             e.preventDefault();
 
-            const productToSave = PageAlta.validateForm();
+            let productToSave = PageAlta.validateForm();
             const imgValidated = PageAlta.validateFileField(PageAlta.fileField.files[0]);
 
             if (productToSave && imgValidated) {
@@ -452,6 +449,7 @@ class PageAlta {
             PageAlta.btnUpdate.disabled = false;
             PageAlta.btnCreate.disabled = true;
             PageAlta.btnReset.value = 'Cancelar';
+            window.scrollTo(0, 150);
         }
         
 

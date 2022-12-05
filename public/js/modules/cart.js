@@ -33,7 +33,7 @@ class Cart {
 
     static getIdFromCard(e, selector) {
         const card = e.target.closest(selector);
-        const {id} = card.dataset;
+        const { id } = card.dataset;
         return id;
     }
 
