@@ -305,9 +305,9 @@ class PageAlta {
 
 
     static async removeImgToReplace(productToUpdate) {
-        const productName = productToUpdate.name;
-        const row = document.querySelector(`[data-name="${productName}"]`);
-        const { img } = row.dataset
+        const productId = productToUpdate.id;
+        const row = document.querySelector(`[data-id="${productId}"]`);
+        const { img } = row.dataset;
         const deletedProductImg = await productController.deleteProductImg(img);
         console.log('deletedProductImg:', deletedProductImg)
     }
@@ -340,7 +340,7 @@ class PageAlta {
         PageAlta.form.addEventListener('submit', async e => {
             e.preventDefault();
 
-            let productToSave = PageAlta.validateForm();
+            const productToSave = PageAlta.validateForm();
             const imgValidated = PageAlta.validateFileField(PageAlta.fileField.files[0]);
 
             if (productToSave && imgValidated) {
@@ -384,8 +384,8 @@ class PageAlta {
             if (productToUpdate && imgValidated) {
                 if (imgToUpdate) {
                     PageAlta.removeImgToReplace(productToUpdate);
+                    productToUpdate = await PageAlta.addImgToProduct(productToUpdate);
                 }
-                productToUpdate = await PageAlta.addImgToProduct(productToUpdate);
                 const updatedProduct = await PageAlta.updateProduct(productToUpdate);
                 if (updatedProduct) {
                     alert('Producto modificado con éxito!');
