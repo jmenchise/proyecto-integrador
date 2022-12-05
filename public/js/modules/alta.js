@@ -372,7 +372,6 @@ class PageAlta {
         PageAlta.btnUpdate.addEventListener('click', async e => {
             let productToUpdate = PageAlta.validateForm();
             let imgValidated = true;
-            console.log('imgValidated:', imgValidated)
             const imgToUpdate = PageAlta.fileField.files[0];
 
             if(imgToUpdate) {
