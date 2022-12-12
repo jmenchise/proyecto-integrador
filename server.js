@@ -20,20 +20,20 @@ app.use('/cart/products', cartRouterProducts);
 
 
 
-app.get('/tmp/uploads/:id', (req, res) => {
-    const { id } = req.params;
-    res.sendFile(`${__dirname}/tmp/uploads/${id}`);
+app.get('/tmp/uploads/:imgName', (req, res) => {
+    const { imgName } = req.params;
+    res.sendFile(`${__dirname}/tmp/uploads/${imgName}`);
 });
 
-app.post('/tmp/uploads',upload.single('img'), (req, res) => {
+app.post('/tmp/uploads', upload.single('img'), (req, res) => {
     const uploadedProductImg = req.file;
     res.json(uploadedProductImg);
 })
 
-app.delete('/tmp/uploads/:id', (req, res) => {
-    const { id } = req.params;
-    fs.unlink(`${__dirname}/tmp/uploads/${id}`, () => {
-        res.json(`Archivo ${id} eliminado!`);
+app.delete('/tmp/uploads/:imgName', (req, res) => {
+    const { imgName } = req.params;
+    fs.unlink(`${__dirname}/tmp/uploads/${imgName}`, () => {
+        res.json(`Archivo ${imgName} eliminado!`);
     });
 });
 

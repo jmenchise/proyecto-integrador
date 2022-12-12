@@ -10,7 +10,6 @@ class Http {
         };
     }
 
-
     async post(url, object) {
         if (url.includes('uploads')) {
             try {
